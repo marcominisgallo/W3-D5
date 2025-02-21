@@ -442,6 +442,25 @@ console.log("search", searchByTitle("Infinity"));
   "match" deve includere tutti i film dell'array "movies" fornito che contengono la stringa fornita all'interno del proprio titolo, mentre "unmatch" deve includere tutti i rimanenti.
 */
 
+const searchAndDivide = function (searchS) {
+  const result = {
+    match: [],
+    unmatch: [],
+  };
+
+  movies.forEach((movie) => {
+    if (movie.Title.includes(searchS)) {
+      result.match.push(movie);
+    } else {
+      result.unmatch.push(movie);
+    }
+  });
+
+  return result;
+};
+
+console.log("s&d", searchAndDivide("Avenger"));
+
 /* ESERCIZIO 19
   Scrivi una funzione chiamata "removeIndex" che riceve un numero come parametro e ritorna l'array "movies" fornito privo dell'elemento nella posizione ricevuta come parametro.
 */
@@ -452,29 +471,65 @@ console.log("search", searchByTitle("Infinity"));
   Scrivi una funzione per selezionare l'elemento dotato di id "container" all'interno della pagina.
 */
 
+const container = document.getElementById("container");
+
 /* ESERCIZIO 21
   Scrivi una funzione per selezionare ogni tag <td> all'interno della pagina.
 */
+
+const allTd = document.getElementsByTagName("td");
 
 /* ESERCIZIO 22
   Scrivi una funzione che, tramite un ciclo, stampa in console il testo contenuto in ogni tag <td> all'interno della pagina.
 */
 
+const printTd = function () {
+  for (let i = 0; i < allTd.length; i++) {
+    console.log(printTd[i].innerText);
+  }
+};
+
 /* ESERCIZIO 23
   Scrivi una funzione per aggiungere un background di colore rosso a ogni link all'interno della pagina.
 */
+
+const allA = document.getElementsByTagName("a");
+
+const aBack = function () {
+  for (let i = 0; i < aBack.length; i++) {
+    aBack[i].setAttribute("style", "background-color: red");
+  }
+};
 
 /* ESERCIZIO 24
   Scrivi una funzione per aggiungere un nuovo elemento alla lista non ordinata con id "myList".
 */
 
+const myList = document.getElementById("myList");
+
+const newLi = document.createElement("li");
+
+myList.appendChild(newLi);
+
 /* ESERCIZIO 25
   Scrivi una funzione per svuotare la lista non ordinata con id "myList".
 */
 
+const allLi = document.querySelectorAll("ul#myList li");
+
+for (let i = 0; i < allLi.length; i++) {
+  delete allLi[i];
+}
+
 /* ESERCIZIO 26
   Scrivi una funzione per aggiungere ad ogni tag <tr> la classe CSS "test"
 */
+
+const allTr = querySelectorAll("tr");
+
+for (let i = 0; i < allTr.length; i++) {
+  allTr[i].classList.add("test");
+}
 
 // [EXTRA] JS Avanzato
 
@@ -490,6 +545,18 @@ console.log("search", searchByTitle("Infinity"));
 
 */
 
+//!!!!
+// in console non escono questi risultati perchè gli esercizi DOM non danno corrispondenza con il documento
+//!!!!!
+
+const halfTree = function (n) {
+  for (let i = 1; i <= n; i++) {
+    console.log("*".repeat(i));
+  }
+};
+
+console.log("Albero", halfTree(8));
+
 /* ESERCIZIO 28
   Crea una funzione chiamata "tree" che riceve un numero come parametro e costruisce un albero di "*" (asterischi) dell'altezza fornita.
 
@@ -501,6 +568,16 @@ console.log("search", searchByTitle("Infinity"));
   *****
 
 */
+
+const tree = function (n) {
+  for (let i = 1; i <= n; i++) {
+    const spaces = " ".repeat(n - i);
+    const stars = "*".repeat(2 * i - 1);
+    console.log(spaces + stars + spaces);
+  }
+};
+
+console.log(tree(4));
 
 /* ESERCIZIO 29
   Crea una funzione chiamata "isItPrime" che riceve un numero come parametro e ritorna true se il numero fornito è un numero primo.
